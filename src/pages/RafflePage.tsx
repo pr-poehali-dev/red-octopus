@@ -28,20 +28,18 @@ export function RafflePage({ prizes, onBack }: RafflePageProps) {
 
     const total = prizes.reduce((s, p) => s + p.weight, 0)
 
+    // Победитель выбирается по весу (проценту) — скрытая механика
     let rand = Math.random() * total
-    let chosen = prizes[prizes.length - 1]
-    for (const p of prizes) {
-      rand -= p.weight
-      if (rand <= 0) { chosen = p; break }
+    let chosenIndex = prizes.length - 1
+    for (let i = 0; i < prizes.length; i++) {
+      rand -= prizes[i].weight
+      if (rand <= 0) { chosenIndex = i; break }
     }
+    const chosen = prizes[chosenIndex]
 
-    let angleStart = 0
-    for (const p of prizes) {
-      if (p.id === chosen.id) break
-      angleStart += (p.weight / total) * 360
-    }
-    const sectorAngle = (chosen.weight / total) * 360
-    const targetSectorMid = angleStart + sectorAngle / 2
+    // Все сектора визуально одинакового размера
+    const sectorAngle = 360 / prizes.length
+    const targetSectorMid = chosenIndex * sectorAngle + sectorAngle / 2
 
     const pointerAt = 270
     const neededRotation = (pointerAt - targetSectorMid + 360) % 360

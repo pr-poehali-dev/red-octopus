@@ -33,27 +33,27 @@ export function FortuneWheel({ prizes, rotation, isSpinning }: FortuneWheelProps
 
     ctx.clearRect(0, 0, SIZE, SIZE)
 
-    const total = prizes.reduce((s, p) => s + p.weight, 0)
+    const count = prizes.length
+    if (count === 0) return
+    const slice = (2 * Math.PI) / count
     let startAngle = 0
 
     prizes.forEach((prize, i) => {
-      const slice = (prize.weight / total) * 2 * Math.PI
-
-      // Sector
+      // Все сектора одинакового размера
       ctx.beginPath()
       ctx.moveTo(cx, cy)
       ctx.arc(cx, cy, R, startAngle, startAngle + slice)
       ctx.closePath()
       ctx.fillStyle = COLORS[i % COLORS.length]
       ctx.fill()
-      ctx.strokeStyle = "rgba(255,255,255,0.7)"
-      ctx.lineWidth = 2
+      ctx.strokeStyle = "rgba(255,255,255,0.8)"
+      ctx.lineWidth = 2.5
       ctx.stroke()
 
       // Inner glow
-      const grad = ctx.createRadialGradient(cx, cy, R * 0.3, cx, cy, R)
-      grad.addColorStop(0, "rgba(255,255,255,0.25)")
-      grad.addColorStop(1, "rgba(0,0,0,0.1)")
+      const grad = ctx.createRadialGradient(cx, cy, R * 0.2, cx, cy, R)
+      grad.addColorStop(0, "rgba(255,255,255,0.3)")
+      grad.addColorStop(1, "rgba(0,0,0,0.08)")
       ctx.beginPath()
       ctx.moveTo(cx, cy)
       ctx.arc(cx, cy, R, startAngle, startAngle + slice)
@@ -63,7 +63,7 @@ export function FortuneWheel({ prizes, rotation, isSpinning }: FortuneWheelProps
 
       // Label
       const midAngle = startAngle + slice / 2
-      const labelR = R * 0.65
+      const labelR = R * 0.62
       const lx = cx + Math.cos(midAngle) * labelR
       const ly = cy + Math.sin(midAngle) * labelR
 
@@ -71,21 +71,21 @@ export function FortuneWheel({ prizes, rotation, isSpinning }: FortuneWheelProps
       ctx.translate(lx, ly)
       ctx.rotate(midAngle + Math.PI / 2)
 
-      const fontSize = slice < 0.4 ? 9 : slice < 0.7 ? 11 : 13
+      const fontSize = count > 10 ? 9 : count > 7 ? 10 : 12
       ctx.font = `bold ${fontSize}px sans-serif`
       ctx.fillStyle = "#fff"
       ctx.textAlign = "center"
-      ctx.shadowColor = "rgba(0,0,0,0.4)"
-      ctx.shadowBlur = 3
+      ctx.shadowColor = "rgba(0,0,0,0.5)"
+      ctx.shadowBlur = 4
 
-      // Wrap text if needed
+      const maxW = R * 0.5
       const words = prize.label.split(" ")
-      const lineH = fontSize + 2
+      const lineH = fontSize + 3
       const lines: string[] = []
       let current = ""
       for (const w of words) {
         const test = current ? `${current} ${w}` : w
-        if (ctx.measureText(test).width > R * 0.55) {
+        if (ctx.measureText(test).width > maxW) {
           if (current) lines.push(current)
           current = w
         } else {
