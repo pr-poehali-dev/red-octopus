@@ -3,10 +3,11 @@ import { ProfileSection } from "@/components/ProfileSection"
 import { LinkCard } from "@/components/LinkCard"
 import { RaffleCard } from "@/components/RaffleCard"
 import { SocialFooter } from "@/components/SocialFooter"
-import { Gift, Users, Sparkles, Phone, Send, Mail, Star } from "lucide-react"
+import { Gift, Users, Sparkles, Phone, Send, Mail, Star, ShieldCheck } from "lucide-react"
 
 interface LinkBioPageProps {
   onRaffle: () => void
+  onAdmin: () => void
 }
 
 const links = [
@@ -68,7 +69,7 @@ const itemVariants = {
   },
 }
 
-export function LinkBioPage({ onRaffle }: LinkBioPageProps) {
+export function LinkBioPage({ onRaffle, onAdmin }: LinkBioPageProps) {
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col overflow-hidden">
       <div className="fixed inset-0 z-0 bg-gradient-to-br from-rose-50 via-pink-50 to-fuchsia-50" />
@@ -139,8 +140,17 @@ export function LinkBioPage({ onRaffle }: LinkBioPageProps) {
           ))}
         </motion.div>
 
-        <motion.div variants={itemVariants} className="pb-2">
+        <motion.div variants={itemVariants} className="pb-2 flex flex-col items-center gap-3">
           <SocialFooter socials={socials} copyright="2025 Салон красоты КУТЮР" />
+          <motion.button
+            onClick={onAdmin}
+            whileTap={{ scale: 0.94 }}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs text-rose-300 hover:text-rose-500 transition-colors"
+            style={{ background: "rgba(255,255,255,0.3)", backdropFilter: "blur(8px)" }}
+          >
+            <ShieldCheck className="h-3.5 w-3.5" />
+            Панель администратора
+          </motion.button>
         </motion.div>
       </motion.div>
     </main>
