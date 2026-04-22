@@ -79,28 +79,28 @@ export function LinkCard({ title, description, href, icon: Icon }: LinkCardProps
       />
 
       <div
-        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-gray-700"
+        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-rose-500"
         style={{
-          background: "rgba(255, 255, 255, 0.8)",
+          background: "rgba(255, 240, 245, 0.9)",
           boxShadow: `
             inset 0 1px 2px rgba(255, 255, 255, 1),
-            inset 0 -1px 1px rgba(0, 0, 0, 0.02),
-            0 2px 4px rgba(0, 0, 0, 0.04),
-            0 4px 8px rgba(0, 0, 0, 0.04)
+            inset 0 -1px 1px rgba(244, 114, 182, 0.05),
+            0 2px 4px rgba(244, 114, 182, 0.08),
+            0 4px 8px rgba(244, 114, 182, 0.06)
           `,
-          border: "1px solid rgba(255, 255, 255, 0.6)",
+          border: "1px solid rgba(244, 114, 182, 0.2)",
         }}
       >
         <Icon className="h-5 w-5" strokeWidth={1.75} />
       </div>
 
       <div className="relative flex-1 min-w-0">
-        <h3 className="text-[15px] font-semibold text-gray-800 tracking-tight">{title}</h3>
-        {description && <p className="text-[12px] text-gray-500 truncate mt-0.5">{description}</p>}
+        <h3 className="text-[15px] font-semibold text-rose-800 tracking-tight">{title}</h3>
+        {description && <p className="text-[12px] text-fuchsia-400 truncate mt-0.5">{description}</p>}
       </div>
 
       <ChevronRight
-        className="relative h-5 w-5 text-gray-400 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-gray-600"
+        className="relative h-5 w-5 text-rose-300 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-rose-500"
         strokeWidth={2}
       />
     </motion.a>

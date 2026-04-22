@@ -23,9 +23,9 @@ export function ProfileSection({ name, bio, imageUrl }: ProfileSectionProps) {
             WebkitBackdropFilter: "blur(10px)",
             boxShadow: `
               inset 0 2px 4px rgba(255, 255, 255, 0.8),
-              0 0 0 2px rgba(255, 255, 255, 0.6),
+              0 0 0 3px rgba(244, 114, 182, 0.4),
               0 4px 16px rgba(0, 0, 0, 0.1),
-              0 12px 32px rgba(120, 119, 198, 0.15)
+              0 12px 32px rgba(244, 114, 182, 0.2)
             `,
           }}
         >
@@ -39,13 +39,13 @@ export function ProfileSection({ name, bio, imageUrl }: ProfileSectionProps) {
         <div
           className="absolute inset-0 rounded-full pointer-events-none"
           style={{
-            boxShadow: "0 0 40px 8px rgba(120, 119, 198, 0.1)",
+            boxShadow: "0 0 40px 8px rgba(244, 114, 182, 0.15)",
           }}
         />
       </motion.div>
 
-      <h1 className="mt-5 text-xl font-semibold tracking-tight text-gray-800">{name}</h1>
-      <p className="mt-2 text-sm text-gray-500">{bio}</p>
+      <h1 className="mt-5 text-xl font-semibold tracking-tight text-rose-700">{name}</h1>
+      <p className="mt-2 text-sm text-fuchsia-500">{bio}</p>
     </div>
   )
 }

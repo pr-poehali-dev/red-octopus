@@ -2,45 +2,51 @@ import { motion } from "framer-motion"
 import { ProfileSection } from "@/components/ProfileSection"
 import { LinkCard } from "@/components/LinkCard"
 import { SocialFooter } from "@/components/SocialFooter"
-import { Globe, Youtube, Mail, ShoppingBag, FileText, MessageCircle, Send } from "lucide-react"
+import { Gift, Trophy, Users, Sparkles, Phone, Send, Mail, Star } from "lucide-react"
 
 const links = [
   {
-    title: "Мой сайт",
-    description: "Портфолио и услуги",
+    title: "Участвовать в розыгрыше",
+    description: "Зарегистрироваться и получить номер",
     href: "#",
-    icon: Globe,
+    icon: Gift,
   },
   {
-    title: "YouTube канал",
-    description: "Видео и туториалы",
+    title: "Мои баллы и шансы",
+    description: "Проверить свои купоны на выигрыш",
     href: "#",
-    icon: Youtube,
+    icon: Star,
   },
   {
-    title: "Магазин",
-    description: "Товары и услуги",
+    title: "Провести розыгрыш",
+    description: "Запустить честное случайное определение победителя",
     href: "#",
-    icon: ShoppingBag,
+    icon: Trophy,
   },
   {
-    title: "Telegram",
-    description: "Написать напрямую",
+    title: "Список участников",
+    description: "Все зарегистрированные гости салона",
     href: "#",
-    icon: Send,
+    icon: Users,
   },
   {
-    title: "Бесплатные материалы",
-    description: "Шаблоны и гайды",
+    title: "Акции и подарки",
+    description: "Текущие призы и специальные предложения",
     href: "#",
-    icon: FileText,
+    icon: Sparkles,
+  },
+  {
+    title: "Записаться в салон",
+    description: "Онлайн-запись к мастеру",
+    href: "#",
+    icon: Phone,
   },
 ]
 
 const socials = [
   { icon: Send, href: "#", label: "Telegram" },
-  { icon: MessageCircle, href: "#", label: "WhatsApp" },
   { icon: Mail, href: "#", label: "Email" },
+  { icon: Phone, href: "#", label: "Телефон" },
 ]
 
 const containerVariants = {
@@ -73,13 +79,13 @@ const itemVariants = {
 export function LinkBioPage() {
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col overflow-hidden">
-      <div className="fixed inset-0 z-0 bg-gradient-to-br from-slate-50 via-white to-slate-100" />
+      <div className="fixed inset-0 z-0 bg-gradient-to-br from-rose-50 via-pink-50 to-fuchsia-50" />
 
       {/* Animated gradient orbs */}
       <motion.div
         className="fixed z-0 w-[500px] h-[500px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(147, 51, 234, 0.25) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(244, 114, 182, 0.3) 0%, transparent 70%)",
           filter: "blur(60px)",
           top: "-10%",
           left: "-10%",
@@ -99,7 +105,7 @@ export function LinkBioPage() {
       <motion.div
         className="fixed z-0 w-[600px] h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(232, 121, 249, 0.25) 0%, transparent 70%)",
           filter: "blur(80px)",
           top: "30%",
           right: "-20%",
@@ -119,7 +125,7 @@ export function LinkBioPage() {
       <motion.div
         className="fixed z-0 w-[450px] h-[450px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 70%)",
           filter: "blur(70px)",
           bottom: "-5%",
           left: "20%",
@@ -139,7 +145,7 @@ export function LinkBioPage() {
       <motion.div
         className="fixed z-0 w-[350px] h-[350px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(249, 168, 212, 0.3) 0%, transparent 70%)",
           filter: "blur(50px)",
           top: "60%",
           left: "-5%",
@@ -211,9 +217,9 @@ export function LinkBioPage() {
       >
         <motion.div variants={itemVariants} className="pt-2">
           <ProfileSection
-            name="GlassLinks"
-            bio="Креативный дизайнер и разработчик"
-            imageUrl="/images/544291433-18043960274659947-5766591717842883293-n.jpg"
+            name="Салон красоты КУТЮР"
+            bio="✨ Беспроигрышные розыгрыши для наших гостей"
+            imageUrl="/placeholder-user.jpg"
           />
         </motion.div>
 
@@ -226,7 +232,7 @@ export function LinkBioPage() {
         </motion.div>
 
         <motion.div variants={itemVariants} className="pb-2">
-          <SocialFooter socials={socials} copyright="2025 GlassLinks" />
+          <SocialFooter socials={socials} copyright="2025 Салон красоты КУТЮР" />
         </motion.div>
       </motion.div>
     </main>
